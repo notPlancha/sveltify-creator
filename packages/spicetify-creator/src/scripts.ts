@@ -9,6 +9,7 @@ import sveltePreprocess from "svelte-preprocess";
 import postCssPlugin from "esbuild-plugin-postcss2/dist/index.js";
 import autoprefixer from "autoprefixer";
 import {exec} from "child_process";
+import { externalGlobalPlugin } from 'esbuild-plugin-external-global';
 
 const promisifiedExec = promisify(exec);
 
@@ -57,6 +58,9 @@ const build = async (watch: boolean, minify: boolean, outDirectory?: string) => 
       externalGlobalPlugin({
         'react': 'Spicetify.React',
         'react-dom': 'Spicetify.ReactDOM',
+      }),
+      sveltePlugin({
+        preprocess: sveltePreprocess()
       })
     ],
   }
