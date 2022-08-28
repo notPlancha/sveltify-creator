@@ -86,5 +86,8 @@ import main from \'${appPath.replace(/\\/g, "/")}\'
     }
 
     console.log(chalk.green('Build succeeded.'));
+    if (fs.existsSync(tempFolder)){
+      fs.rmSync(tempFolder, {recursive: true})
+    }
   }
 }
