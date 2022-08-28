@@ -15,5 +15,8 @@ Check out [Spicetify's docs](https://spicetify.app/docs/development/spicetify-cr
 ## Made with Spicetify Creator
 - https://github.com/spicetify/spicetify-creator
 
+## Get started
+the app creator is in the works, in the meantime use [this template](https://github.com/notPlancha/sveltify-template)
+
 ## Contribute
-feel free to pull request. If you want insight on future plans you can check the projects page
+Feel free to pull request. If you want insight on future plans you can check the projects page
