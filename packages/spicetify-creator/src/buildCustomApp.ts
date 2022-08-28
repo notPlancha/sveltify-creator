@@ -2,10 +2,10 @@ import glob from 'glob'
 import chalk from 'chalk';
 import fs from 'fs'
 import path from 'path'
-import { ICustomAppManifest, ICustomAppSettings, IExtensionSettings } from './helpers/models'
-import extractFiles from './helpers/extractFiles'
-import { minifyFolder } from './helpers/minify';
-const esbuild = require("esbuild")
+import type { ICustomAppManifest, ICustomAppSettings } from './helpers/models.js'
+import extractFiles from './helpers/extractFiles.js'
+import { minifyFolder } from './helpers/minify.js';
+import esbuild from "esbuild";
 
 export default async (settings: ICustomAppSettings, outDirectory: string, watch: boolean, esbuildOptions: any, minify: boolean) => {
   const extensions = glob.sync("./src/extensions/*(*.ts|*.tsx|*.js|*.jsx)");
@@ -23,7 +23,7 @@ export default async (settings: ICustomAppSettings, outDirectory: string, watch:
   }
   fs.writeFileSync(path.join(outDirectory, "manifest.json"), JSON.stringify(customAppManifest, null, 2))
 
-  const appPath = path.resolve(glob.sync('./src/*(app.ts|app.tsx|app.js|app.jsx)')[0]);
+  const appPath = path.resolve(await glob.sync('./src/*(app.ts|app.tsx|app.js|app.jsx)')[0]);
   const tempFolder = path.join(__dirname,`./temp/`);
   const indexPath = path.join(tempFolder,`index.jsx`);
 
@@ -78,7 +78,7 @@ export default function render() {
     console.log("Renaming index.css...")
     if (fs.existsSync(path.join(outDirectory, "index.css")))
       fs.renameSync(path.join(outDirectory, "index.css"), path.join(outDirectory, "style.css"))
-    
+
     if (minify) {
       console.log("Minifying...");
       await minifyFolder(outDirectory);

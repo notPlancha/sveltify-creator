@@ -2,11 +2,9 @@ import glob from 'glob'
 import chalk from 'chalk';
 import fs from 'fs'
 import path from 'path'
-import { ICustomAppManifest, ICustomAppSettings, IExtensionSettings } from './helpers/models'
-import { minifyCSS, minifyFolder } from './helpers/minify';
-const esbuild = require("esbuild")
-const postCssPlugin = require("esbuild-plugin-postcss2");
-const autoprefixer = require("autoprefixer");
+import type { IExtensionSettings } from './helpers/models.js'
+import { minifyCSS, minifyFolder } from './helpers/minify.js';
+import esbuild from "esbuild";
 
 export default async (settings: IExtensionSettings, outDirectory: string, watch: boolean, esbuildOptions: any, minify: boolean) => {
   // const extension = path.join("./src/", "app.tsx")
@@ -14,10 +12,11 @@ export default async (settings: IExtensionSettings, outDirectory: string, watch:
   const compiledExtension = path.join(outDirectory, `${settings.nameId}.js`);
   const compiledExtensionCSS = path.join(outDirectory, `${settings.nameId}.css`);
 
-  const appPath = path.resolve(glob.sync('./src/*(app.ts|app.tsx|app.js|app.jsx)')[0]);
+  const appPath = path.resolve(await glob.sync('./src/*(app.ts|app.tsx|app.js|app.jsx|app.svelte)')[0]);
+  const __dirname = path.resolve();
   const tempFolder = path.join(__dirname,`./temp/`);
   const indexPath = path.join(tempFolder,`index.jsx`);
-  
+
   if (!fs.existsSync(tempFolder))
     fs.mkdirSync(tempFolder)
   fs.writeFileSync(indexPath, `
@@ -58,7 +57,7 @@ import main from \'${appPath.replace(/\\/g, "/")}\'
 
     if (fs.existsSync(compiledExtensionCSS)) {
       console.log("Bundling css and js...");
-      
+
       let css = fs.readFileSync(compiledExtensionCSS, "utf-8");
       if (minify) {
         css = await minifyCSS(css);
