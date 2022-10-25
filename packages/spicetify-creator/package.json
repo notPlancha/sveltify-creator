@@ -1,7 +1,7 @@
 {
-  "name": "spicetify-creator",
-  "version": "1.0.11",
-  "description": "Easily make Spicetify extensions and custom apps.",
+  "name": "sveltify-creator",
+  "version": "1.0.1",
+  "description": "Easily make Spicetify extensions and custom apps, now with svelte.",
   "bin": "./dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -33,5 +33,25 @@
     "ts-node": "^10.4.0",
     "typescript": "^4.8.2"
   },
-  "type": "module"
+  "type": "module",
+  "keywords": [
+    "spicetify",
+    "svelte",
+    "spicetify creator",
+    "spicetify extension",
+    "sveltify",
+    "spotify",
+    "spcr",
+    "spcr-",
+    "spcr-",
+    "scpr",
+    "scpr-"
+  ],
+  "author": "notPlancha",
+  "contributors": [
+    "FlafyDev",
+    "jeroentvb"
+  ],
+  "private": false,
+  "repository": "git+https://github.com/notPlancha/sveltify-creator/"
 }

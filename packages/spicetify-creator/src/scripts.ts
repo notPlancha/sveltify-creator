@@ -40,7 +40,7 @@ const build = async (watch: boolean, minify: boolean, outDirectory?: string) => 
   const esbuildOptions = {
     platform: 'browser',
     external: ['react', 'react-dom'],
-    mainFields: ["svelte", "browser", "module", "main"], //TODO check if it's needed
+    mainFields: ["svelte", "browser", "module", "main"],
 
     bundle: true,
     globalName: id,
