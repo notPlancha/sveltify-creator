@@ -53,6 +53,10 @@ const build = async (watch: boolean, minify: boolean, outDirectory?: string) => 
       }),
       sveltePlugin({
         preprocess: sveltePreprocess()
+      }),
+      externalGlobalPlugin({
+        'react': 'Spicetify.React',
+        'react-dom': 'Spicetify.ReactDOM',
       })
     ],
   }
