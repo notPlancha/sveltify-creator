@@ -2,8 +2,9 @@
 
 Sveltify Creator is a tool to compile modern Typescript/Javascript code to Spicetify extensions and custom apps, now with possibility of using svelte instead of react (or in combination!)
 
-## Instalation
-To install run `npx sveltify-creator`, or use the template below
+## Usage 
+the app creator is in the works, in the meantime use [this template](https://github.com/notPlancha/sveltify-template)
+In the future you can probably run `npx sveltify-creator` to create the extension/app
 
 ## Features
 - Typescript, React and svelte syntax
