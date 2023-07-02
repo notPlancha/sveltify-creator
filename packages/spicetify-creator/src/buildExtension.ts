@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import fs from 'fs'
 import path from 'path'
 import type { IExtensionSettings } from './helpers/models.js'
-import { minifyCSS, minifyFolder } from './helpers/minify.js';
+import { minifyCSS, minifyFile, minifyFolder } from './helpers/minify';
 import esbuild from "esbuild";
 
 export default async (settings: IExtensionSettings, outDirectory: string, watch: boolean, esbuildOptions: any, minify: boolean) => {
@@ -73,7 +73,7 @@ import main from \'${appPath.replace(/\\/g, "/")}\'
 
     if (minify) {
       console.log("Minifying...");
-      await minifyFolder(outDirectory)
+      await minifyFile(compiledExtension);
     }
 
     console.log(chalk.green('Build succeeded.'));
