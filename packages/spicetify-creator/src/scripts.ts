@@ -9,7 +9,9 @@ import sveltePreprocess from "svelte-preprocess";
 import postCssPlugin from "esbuild-plugin-postcss2/dist/index.js";
 import autoprefixer from "autoprefixer";
 import {exec} from "child_process";
-import { externalGlobalPlugin } from 'esbuild-plugin-external-global';
+
+import egp from 'esbuild-plugin-external-global';
+const externalGlobalPlugin = egp.externalGlobalPlugin;
 
 const promisifiedExec = promisify(exec);
 
@@ -66,9 +68,9 @@ const build = async (watch: boolean, minify: boolean, outDirectory?: string) => 
   }
 
   if (isExtension) {
-    buildExtension(settings, outDirectory, watch, esbuildOptions, minify);
+    await buildExtension(settings, outDirectory, watch, esbuildOptions, minify);
   } else {
-    buildCustomApp(settings, outDirectory, watch, esbuildOptions, minify); //todo make app too
+    await buildCustomApp(settings, outDirectory, watch, esbuildOptions, minify);//todo make app too
   }
 
 

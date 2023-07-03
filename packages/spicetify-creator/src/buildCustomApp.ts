@@ -1,4 +1,4 @@
-import glob from 'glob'
+import { glob}  from 'glob'
 import chalk from 'chalk';
 import fs from 'fs'
 import path from 'path'

@@ -11,6 +11,6 @@ build(argv['watch'] || argv['w'], argv['minify'] || argv['m'], argv['out'] || ar
     const __dirname = path.resolve();
     const tempFolder = path.join(__dirname,`./temp/`);
     if (fs.existsSync(tempFolder)){
-        fs.rmdirSync(tempFolder)
+        fs.rmSync(tempFolder, { recursive: true })
     }
 })

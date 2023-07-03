@@ -4,8 +4,7 @@
   "compilerOptions": {
     //svelte specific
     "moduleResolution": "node",
-    "importsNotUsedAsValues": "error",
-    "preserveValueImports": true,
+    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "sourceMap": true,
     "strict": false,
